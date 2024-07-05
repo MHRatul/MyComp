@@ -6,7 +6,8 @@ import { getProviders, signIn, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-const Login = ({ url }) => {
+const Login = ({ title }) => {
+  console.log(title);
   const session = useSession();
   const router = useRouter();
   const params = useSearchParams();
@@ -39,7 +40,7 @@ const Login = ({ url }) => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>{success ? success : "Welcome Back"}</h1>
+      <h1 className={styles.title}>{title || (success ? success : "Welcome Back")}</h1>
       <h2 className={styles.subtitle}>Please sign in to see the dashboard.</h2>
 
       <form onSubmit={handleSubmit} className={styles.form}>
